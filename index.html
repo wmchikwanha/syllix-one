@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Syllix-One | Strategic Technology</title>
+    <style>
+        :root {
+            --primary-navy: #1a365d;
+            --consulting-orange: #f57c00;
+            --learning-blue: #0288d1;
+            --publishing-purple: #7e57c2;
+            --text-main: #2d3748;
+            --text-muted: #718096;
+        }
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #ffffff;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            background-color: var(--primary-navy);
+            color: white;
+            padding: 20px 20px 40px;
+            text-align: center;
+        }
+        .hero h1 { font-size: clamp(22px, 7vw, 32px); letter-spacing: 5px; margin: 0 0 5px 0; font-weight: 700; }
+        .hero .mandate { max-width: 850px; margin: 20px auto 0; font-size: 17px; line-height: 1.7; color: #cbd5e1; }
+
+        .container { max-width: 1240px; margin: 0 auto; padding: 40px 20px; }
+        .section-header { text-align: center; margin-bottom: 40px; }
+        .section-header h2 { color: var(--primary-navy); font-size: 28px; margin-bottom: 10px; }
+
+        /* --- THE 3 SPECIALIST DIVISIONS (NEW FINESSED UI) --- */
+        .gateway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 80px;
+        }
+        .card-div {
+            border: 1px solid #edf2f7;
+            border-radius: 24px;
+            padding: 40px;
+            text-align: left;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 420px;
+        }
+        .card-div:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        
+        /* Icons */
+        .icon-box {
+            width: 64px; height: 64px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 25px; color: white; font-size: 30px;
+        }
+
+        /* Specific Colorways */
+        .c-orange { background-color: #fff9f5; border-color: #ffe0cc; }
+        .c-orange .icon-box { background: linear-gradient(135deg, #ff9800, #f57c00); }
+        .c-orange h3 { color: var(--consulting-orange); }
+        .c-orange .link { color: var(--consulting-orange); }
+
+        .c-blue { background-color: #f0f9ff; border-color: #d1edff; }
+        .c-blue .icon-box { background: linear-gradient(135deg, #03a9f4, #0288d1); }
+        .c-blue h3 { color: var(--learning-blue); }
+        .c-blue .link { color: var(--learning-blue); }
+
+        .c-purple { background-color: #f8f5ff; border-color: #e8e0ff; }
+        .c-purple .icon-box { background: linear-gradient(135deg, #9575cd, #7e57c2); }
+        .c-purple h3 { color: var(--publishing-purple); }
+        .c-purple .link { color: var(--publishing-purple); }
+
+        .card-div h3 { font-size: 24px; margin: 0 0 15px 0; font-weight: 600; }
+        .card-div p { font-size: 16px; color: #4a5568; margin-bottom: 20px; line-height: 1.6; }
+        
+        .card-footer { margin-top: auto; }
+        .link { text-decoration: none; font-weight: 600; font-size: 15px; display: inline-flex; align-items: center; gap: 5px; margin-bottom: 5px; }
+        .email { display: block; font-size: 13px; color: var(--text-muted); }
+
+        /* --- DEPLOYED SOLUTIONS (8 PANELS) --- */
+        .solutions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .panel { padding: 35px; border-radius: 24px; color: white; display: flex; flex-direction: column; justify-content: space-between; min-height: 280px; position: relative; overflow: hidden; }
+        .panel h4 { margin: 0 0 12px 0; font-size: 21px; font-weight: 600; }
+        .panel p { font-size: 14px; opacity: 0.95; line-height: 1.6; margin-bottom: 25px; }
+        .panel a { color: #ffd700; text-decoration: none; font-weight: 700; font-size: 14px; }
+
+        .p-kud { background: linear-gradient(180deg, #991b1b, #7f1d1d); }
+        .p-erp { background: linear-gradient(180deg, #065f46, #059669); }
+        .p-lex { background: linear-gradient(180deg, #1e293b, #334155); }
+        .p-inc { background: linear-gradient(180deg, #0d9488, #0f766e); }
+        .p-nzw { background: linear-gradient(180deg, #1a237e, #283593); }
+        .p-tan { background: linear-gradient(180deg, #0066cc, #0099cc); }
+        .p-ubu { background: linear-gradient(180deg, #ff6b35, #ff9500); }
+        .p-ten { background: linear-gradient(180deg, #6b46c1, #9f7aea); }
+        .p-ubu a { color: #1a365d; }
+
+        /* --- FOOTER --- */
+        .footer { background: var(--primary-navy); color: white; padding: 50px 20px; text-align: center; }
+        .footer p { margin: 5px 0; font-size: 14px; opacity: 0.7; }
+        .footer-links { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 30px; }
+        .footer-links a { color: #ffd700; text-decoration: none; font-weight: 600; font-size: 14px; }
+
+        @media (max-width: 600px) { .container { padding: 20px 15px; } .card-div { padding: 30px; } }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>SYLLIX-ONE</h1>
+        <div class="mandate">
+            Providing strategic advisory, digital transformation consulting, and technology-enabled business solutions to organisations, institutions, and individuals across Southern Africa.
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- SPECIALIST DIVISIONS (MATCHES SCREENSHOT) -->
+        <div class="gateway-grid">
+            
+            <!-- Consulting -->
+            <div class="card-div c-orange">
+                <div class="icon-box">📦</div>
+                <div>
+                    <h3>Stratedge Consulting</h3>
+                    <p>Digital transformation advisory, AI implementation, automation workflows, and strategic organisational development for enterprises and institutions.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="https://stratedgeconsult.services" target="_blank" class="link">Visit stratedgeconsult.services ↗</a>
+                    <span class="email">solutions@stratedgeconsult.services</span>
+                </div>
+            </div>
+
+            <!-- Learning -->
+            <div class="card-div c-blue">
+                <div class="icon-box">🎓</div>
+                <div>
+                    <h3>Stratedge Learning</h3>
+                    <p>AI literacy programmes, free educational modules, and capacity-building resources. From pocketbook series to comprehensive courses.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="https://stratedgelearn.com" target="_blank" class="link">Visit stratedgelearn.com ↗</a>
+                    <span class="email">contact@stratedgelearn.com</span>
+                </div>
+            </div>
+
+            <!-- Publishing -->
+            <div class="card-div c-purple">
+                <div class="icon-box">📖</div>
+                <div>
+                    <h3>Stratedge Publishing</h3>
+                    <p>Digital publications, AI Companion Pocketbook series, educational materials, and knowledge products distributed across Amazon KDP, Snapplify, and African Books Collective.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="https://www.stratedgelearn.com/open-access-modules" target="_blank" class="link">View Published Books ↗</a>
+                    <span class="email">contact@stratedgelearn.com</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <h2>Technology-Enabled Solutions</h2>
+        </div>
+
+        <!-- THE 8 SOLUTIONS PANELS (PREVIOUSLY UPDATED) -->
+        <div class="solutions-grid">
+            <div class="panel p-kud">
+                <h4>KudzidzisAI</h4>
+                <p>Redesign tertiary assessments for the AI era. Transform questions into three defensible variants (AI-Assisted, Limited, Resistant) and generate formal Faculty AI Governance Logs.</p>
+                <a href="https://ai-exam-adapt.lovable.app" target="_blank">Visit Platform →</a>
+            </div>
+            <div class="panel p-erp">
+                <h4>StratedgeOS ERP</h4>
+                <p>A standalone, browser-based, all-in-one ERP delivering enterprise-grade functionality that unifies CRM, finance, HR, and analytics into a single secure workspace.</p>
+                <a href="https://erp-os-project.lovable.app" target="_blank">Visit Platform →</a>
+            </div>
+            <div class="panel p-lex">
+                <h4>LexAfrika AI</h4>
+                <p>Bespoke AI solutions for legal teams and consultancies. Custom-built workflows and jurisdictional intelligence for high-stakes professional environments.</p>
+                <a href="https://lexafrika-ai.lovable.app/" target="_blank">Explore Deployment →</a>
+            </div>
+            <div class="panel p-inc">
+                <h4>InclusiveEd</h4>
+                <p>Empowering Special Needs Education (SNE) teachers with AI-generated assessments and personalized instruction tools for Southern African learners with disabilities.</p>
+                <a href="https://learner-assess.lovable.app" target="_blank">Visit Platform →</a>
+            </div>
+            <div class="panel p-nzw">
+                <h4>Nzwisiso</h4>
+                <p>AI-powered psychiatric assessment platform with cultural NLP for regional healthcare systems and mental health mapping in Southern Africa.</p>
+                <a href="https://nzwisiso-mh.lovable.app" target="_blank">Visit Platform →</a>
+            </div>
+            <div class="panel p-tan">
+                <h4>TandemLearn</h4>
+                <p>Real-time classroom transcription and sign language integration for inclusive, accessible tertiary and secondary education.</p>
+                <a href="https://tandemlearn-v6.lovable.app" target="_blank">Visit Platform →</a>
+            </div>
+            <div class="panel p-ubu">
+                <h4>Ubuntu Trade</h4>
+                <p>AI-augmented trade facilitation for SADC nations. Duty estimation and document checklists for seamless regional commerce across 16 nations.</p>
+                <a href="https://border-trade-s.lovable.app" target="_blank">Visit Platform →</a>
+            </div>
+            <div class="panel p-ten">
+                <h4>Tengesa4Profit</h4>
+                <p>Smart inventory and multi-currency profit tracking for micro-entrepreneurs and street vendors supporting informal sector growth with AI business tools.</p>
+                <a href="https://tengesa-4-profit.lovable.app" target="_blank">Visit Platform →</a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 Syllix-One Digital Services (PBC).</p>
+        <p>Registered in Zimbabwe. Trading as Stratedge.</p>
+        <div class="footer-links">
+            <a href="https://stratedgeconsult.services" target="_blank">Consulting</a>
+            <a href="https://stratedgelearn.com" target="_blank">Learning</a>
+            <a href="https://www.stratedgelearn.com/open-access-modules" target="_blank">Publishing</a>
+        </div>
+    </footer>
+
+</body>
+</html>
